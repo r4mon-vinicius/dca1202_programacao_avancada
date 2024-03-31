@@ -1,29 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int compare(const void * a, const void * b){
+  if ( *(float*)a <  *(float*)b ) return -1;
+  if ( *(float*)a == *(float*)b ) return 0;
+  if ( *(float*)a >  *(float*)b ) return 1;
+}
+
 void ordenador(int n) {
     //Realiza a alocação de memória referente a quantidade n de floats
     float *nums = (float*) malloc(n * sizeof(float));
 
-    //Realiza a leitura de dos n números 
+    //Realiza a leitura de dos n números
     for (int i = 0; i < n; i++){
-        scanf("%f", &(nums + i)); 
+        scanf("%f", &nums[i]);
     }
-    //Implementando o método mais simples (bubble sort)
-    float aux;
-    //compara elemento a elemento, se x[i] for maior que x[i+1], suas posições são trocadas
+
+    qsort(nums, n, sizeof(float), compare);
+
+    //Imprime na tela os n números ordenados
     for (int i = 0; i < n; i++){
-        for (int j = i + 1; j < n; j++){
-            if (nums[i] > nums[j]){
-                aux = nums[i];
-                nums[i] = nums[j];
-                nums[j] = aux;
-            }
-        }
-    }
-    //Imprime na tela os n números ordenados 
-    for (int i = 0; i < n; i++){
-        printf("%f /n", nums[i]); 
+        printf("%f \n", nums[i]);
     }
     //Libera a memória alocada
     free(nums);
