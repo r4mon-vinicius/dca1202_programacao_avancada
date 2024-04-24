@@ -1,2 +1,2 @@
-# Lista de Exercícios 01
-Lista de exercícios sobre ponteiros em c.
+# Programação Avançada
+Projetos da disciplina de Programação Avançada do DCA (Departamento de Computação e Automação) - UFRN.
